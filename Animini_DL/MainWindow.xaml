@@ -20,7 +20,7 @@
             <MenuItem Header="Affichage">
             </MenuItem>
             <MenuItem Header="Téléchargements">
-                <MenuItem Header="Tout annuler(pas implémenté)" Click="CancelAllDownloads"/>
+                <MenuItem Header="Tout annuler(pas implémenté)"/>
                 <Separator />
                 <MenuItem Header="File d'attente(pas implémenté)" />
             </MenuItem>
