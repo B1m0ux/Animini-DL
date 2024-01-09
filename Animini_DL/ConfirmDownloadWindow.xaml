@@ -1,0 +1,26 @@
+﻿<Window x:Class="Animini_DL.DownloadSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Paramètres de téléchargment" Height="290" Width="300">
+    <Grid>
+        <StackPanel Margin="10">
+            <GroupBox Header="Qualité">
+                <StackPanel>
+                    <RadioButton Content="360p" Name="radio360p" />
+                    <RadioButton Content="480p" Name="radio480p" />
+                    <RadioButton Content="720p" Name="radio720p" />
+                    <RadioButton Content="1080p" Name="radio1080p" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Episodes">
+                <StackPanel>
+                    <TextBlock Text="Depuis Episode:" />
+                    <TextBox Name="txtStartEpisode" />
+                    <TextBlock Text="Jusqu'a Episode:" />
+                    <TextBox Name="txtEndEpisode" />
+                </StackPanel>
+            </GroupBox>
+            <Button Content="OK" Width="80" Height="25" Click="BtnOk_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
