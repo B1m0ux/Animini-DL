@@ -9,13 +9,10 @@ namespace Animini_DL
 {
     public partial class MainWindow : Window
     {
-        public AnimesClasses.AnimeInfo animeInfoResponse;
-
         public MainWindow()
         {
             InitializeComponent();
             SizeChanged += MainWindow_SizeChanged;
-            AppConfig.Load();
         }
 
         private void AdjustLayoutBasedOnWindowSize(SizeChangedEventArgs e)
@@ -42,7 +39,8 @@ namespace Animini_DL
         }
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            await AnimeUtils.SearchAnimes(this);
+            AnimesClasses.AnimeResponse animeResponse = await AnimeUtils.SearchAnimes(this);
+            AnimeListBox.ItemsSource = animeResponse.Results;
         }
 
         private void AnimeListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -60,7 +58,7 @@ namespace Animini_DL
             AnimesClasses.Anime selectedAnime = (AnimesClasses.Anime)AnimeListBox.SelectedItem;
             if (selectedAnime != null)
             {
-                AnimesClasses.AnimeInfo animeInfoResponse = await AnimeUtils.GetAnimeInfos(selectedAnime.Id);
+                AnimesClasses.Anime animeInfoResponse = await AnimeUtils.GetAnimeInfos(selectedAnime.Id);
                 DownloadSettingsWindow settingsWindow = new DownloadSettingsWindow();
                 bool? result = settingsWindow.ShowDialog();
                 settingsWindow.Owner = this;

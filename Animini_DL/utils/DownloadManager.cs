@@ -1,24 +1,22 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Animini_DL.utils
 {
     internal static class DownloadManager
     {
-        private static readonly Process ffmpegProcess = new Process();
         private static readonly List<Process> processList = new List<Process>();
         private static readonly string ffmpegPath = "ffmpeg\\ffmpeg.exe";
+        private static readonly AppConfig appConfig = AppConfig.Load();
 
         private static string BuildOutputFilePath(string title, int episodeNumber)
         {
-            string saveLocation = "C:\\Users\\tobias\\Animinid";
+            string saveLocation = appConfig.AppFolders.SaveLocation;
             string saveFolder = Path.Combine(saveLocation, title);
             Directory.CreateDirectory(saveFolder);
             string outputFileName = $"{title} - Episode {episodeNumber}.mp4";
@@ -48,7 +46,7 @@ namespace Animini_DL.utils
             processList.Add(ffmpegProcess);
         }
 
-        public static async Task<Process> DownloadAnime(AnimesClasses.Episode episode, string selectedQuality, MainWindow mainWindow, AnimesClasses.AnimeInfo animeInfo)
+        public static async Task<Process> DownloadAnime(AnimesClasses.Episode episode, string selectedQuality, MainWindow mainWindow, AnimesClasses.Anime animeInfo)
         {
             try
             {

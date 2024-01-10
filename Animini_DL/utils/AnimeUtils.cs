@@ -7,8 +7,6 @@ namespace Animini_DL.utils
 {
     internal static class AnimeUtils
     {
-        private static AnimesClasses.AnimeInfo animeInfoResponse;
-
         public static async Task<string> GetResponse(string url)
         {
             using (HttpClient httpClient = new())
@@ -19,12 +17,12 @@ namespace Animini_DL.utils
             }
         }
 
-        public static async Task<AnimesClasses.AnimeInfo> GetAnimeInfos(string id)
+        public static async Task<AnimesClasses.Anime> GetAnimeInfos(string id)
         {
             try
             {
                 string content = await AnimeUtils.GetResponse($"https://consu-api-2.vercel.app/anime/gogoanime/info/{id}");
-                return JsonConvert.DeserializeObject<AnimesClasses.AnimeInfo>(content);
+                return JsonConvert.DeserializeObject<AnimesClasses.Anime>(content);
             }
             catch (Exception ex)
             {
@@ -33,17 +31,17 @@ namespace Animini_DL.utils
             }
         }
 
-        public static async Task SearchAnimes(MainWindow mainWindow)
+        public static async Task<AnimesClasses.AnimeResponse> SearchAnimes(MainWindow mainWindow)
         {
             try
             {
                 string content = await GetResponse($"https://consu-api-2.vercel.app/anime/gogoanime/{mainWindow.SearchBar.Text}");
-                AnimesClasses.AnimeResponse animeResponse = JsonConvert.DeserializeObject<AnimesClasses.AnimeResponse>(content);
-                mainWindow.AnimeListBox.ItemsSource = animeResponse.Results;
+                return JsonConvert.DeserializeObject<AnimesClasses.AnimeResponse>(content);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erreur : {ex.Message}");
+                return null;
             }
         }
 
