@@ -14,7 +14,6 @@ namespace Animini_DL
         {
             InitializeComponent();
             SizeChanged += MainWindow_SizeChanged;
-            AppConfig.Load();
         }
 
         private void AdjustLayoutBasedOnWindowSize(SizeChangedEventArgs e)
