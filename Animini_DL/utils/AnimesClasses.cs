@@ -15,7 +15,7 @@ namespace Animini_DL.utils
             public string Url { get; set; }
         }
 
-        public class AnimeInfo
+        public class Anime
         {
             public string Id { get; set; }
             public string Title { get; set; }
@@ -30,16 +30,6 @@ namespace Animini_DL.utils
             public string OtherName { get; set; }
             public int TotalEpisodes { get; set; }
             public List<Episode> Episodes { get; set; }
-        }
-
-        public class Anime
-        {
-            public string Id { get; set; }
-            public string Title { get; set; }
-            public string Url { get; set; }
-            public string Image { get; set; }
-            public string ReleaseDate { get; set; }
-            public string SubOrDub { get; set; }
         }
 
         public class AnimeResponse

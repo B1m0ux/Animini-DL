@@ -48,7 +48,7 @@ namespace Animini_DL.utils
             processList.Add(ffmpegProcess);
         }
 
-        public static async Task<Process> DownloadAnime(AnimesClasses.Episode episode, string selectedQuality, MainWindow mainWindow, AnimesClasses.AnimeInfo animeInfo)
+        public static async Task<Process> DownloadAnime(AnimesClasses.Episode episode, string selectedQuality, MainWindow mainWindow, AnimesClasses.Anime animeInfo)
         {
             try
             {
