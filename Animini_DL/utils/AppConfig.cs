@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System.IO;
 using System;
-using Microsoft.Win32;
+using System.IO;
 
 namespace Animini_DL.utils
 {
@@ -9,7 +8,7 @@ namespace Animini_DL.utils
     {
         public class Folders
         {
-            public string SaveLocation { get; set; }
+            public string SaveLocation { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Animinid");
         }
 
         public Folders AppFolders { get; set; }
@@ -19,7 +18,14 @@ namespace Animini_DL.utils
             try
             {
                 string json = File.ReadAllText("appSettings.json");
-                return JsonConvert.DeserializeObject<AppConfig>(json);
+                var config = JsonConvert.DeserializeObject<AppConfig>(json);
+
+                if (string.IsNullOrEmpty(config?.AppFolders?.SaveLocation))
+                {
+                    config.AppFolders.SaveLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Animinid");
+                }
+
+                return config;
             }
             catch (Exception ex)
             {

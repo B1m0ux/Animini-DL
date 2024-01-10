@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using static Animini_DL.utils.AnimesClasses;
 
 namespace Animini_DL
 {

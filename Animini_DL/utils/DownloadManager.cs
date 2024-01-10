@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Animini_DL.utils
@@ -14,7 +12,7 @@ namespace Animini_DL.utils
     {
         private static readonly List<Process> processList = new List<Process>();
         private static readonly string ffmpegPath = "ffmpeg\\ffmpeg.exe";
-        private static AppConfig appConfig = AppConfig.Load();
+        private static readonly AppConfig appConfig = AppConfig.Load();
 
         private static string BuildOutputFilePath(string title, int episodeNumber)
         {
