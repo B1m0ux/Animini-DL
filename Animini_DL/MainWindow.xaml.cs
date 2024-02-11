@@ -40,7 +40,13 @@ namespace Animini_DL
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             AnimesClasses.AnimeResponse animeResponse = await AnimeUtils.SearchAnimes(this);
-            AnimeListBox.ItemsSource = animeResponse.Results;
+            if (animeResponse != null)
+            {
+                if (animeResponse.Results != null)
+                {
+                    AnimeListBox.ItemsSource = animeResponse.Results;
+                }
+            }
         }
 
         private void AnimeListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
